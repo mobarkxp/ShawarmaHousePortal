@@ -1,0 +1,400 @@
+﻿@model ShawarmaHousePortal.Models.Employee
+@{
+    Layout = null;
+   
+}
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShawarmaHousePortal</title>
+    <link rel="icon" type="image/png" href="~/AdminAssist/assets/img/favicon.jpg">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="~/ShawarmaHousePortal.styles.css" asp-append-version="true" />
+</head>
+<div class="row card">
+
+
+
+    <div class="row card-header txt justify-content-between">
+        <h4 class="col-4"> رقم الطلب @Model.RandomEmpid</h4>
+        <div class="col-2">
+                        <button class="bt form-control" onclick="window.print();">طباعة</button>
+                    </div>
+    </div>
+    <div class="col-md-12 card-body">
+        <form >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!--
+                card spicial information
+            -->
+            <div class="card">
+                <label class="txt card-header btx">معلومات شخصية</label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" disabled />
+                           
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label"></label>
+                            <input asp-for="Phone" placeholder="05xxxxxxxx" class="form-control" disabled />
+                           
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" disabled />
+                           
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="DateBrith" class="control-label"></label>
+                            <input placeholder=" @Html.DisplayFor(model => model.DateBrith)" class="form-control" disabled />
+                            <span asp-validation-for="DateBrith" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="GenderId" class="control-label"></label>
+                            <input placeholder=" @Html.DisplayFor(model => model.Gender.GenderName)" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CityId" class="control-label"></label>
+                            <input placeholder=" @Html.DisplayFor(model => model.City.CityName)" class="form-control" disabled />
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                       
+                        <div class="form-group">
+                            <label asp-for="MariedId" class="control-label"></label>
+                            <input placeholder=" @Html.DisplayFor(model => model.Maried.MName)" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label"></label>
+                            <textarea asp-for="Address" class="form-control" rows="2" disabled></textarea>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--Education information-->
+
+             <div class="card mt-2">
+                <label class="txt card-header btx">المعلومات العلمية </label>
+                <div class="row card-body">
+                    @foreach (var item in ViewBag.Education)
+                    {
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">  التخصص</label>
+                                    <input value="@item.EName" class="form-control" disabled />
+                                   
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">  الشهادة</label>
+                                    <input value="@item.Specialization" class="form-control" disabled />
+                                    
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">التقدير</label>
+                                    <input value="@item.Average" class="form-control" disabled />
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">  الجهة المانحة</label>
+                                    <input value="@item.Scool" class="form-control" disabled />
+                                   
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">السنة</label>
+                                    <input value="@item.Edate.ToShortDateString()" class="form-control" disabled />
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- Work part-->
+            <div class="mt-2 card">
+                <label class="txt card-header btx">معلومات الوظيفة  </label>
+                <div class="row card-body">
+                    @foreach(var item in ViewBag.Work)
+                    {
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label"> المسمى الوظيفي</label>
+                                    <input value="@item.WName" class="form-control" disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">  الراتب</label>
+                                    <input value="@item.Salary" type="number" class="form-control" disabled />
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">  جهة العمل</label>
+                                    <input value="@item.WCompany" class="form-control" disabled />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">  العنوان</label>
+                                    <input value="@item.WAddress" class="form-control" disabled />
+                                   
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">  من </label>
+                                    <input value="@item.WStartDate.ToShortDateString()" class="form-control" disabled />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">  إلى</label>
+                                    <input value="@item.WEndDate.ToShortDateString()" class="form-control" disabled />
+
+                                </div>
+
+
+
+                            </div>
+                            <span></span>
+                            <hr class="mt-2">
+                        </div>
+  }
+                </div>
+            </div>
+
+            <!-- midical part-->
+            <div class="mt-2 card">
+                <label class="txt card-header btx">معلومات صحية</label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.HaveDriveLicence)
+                               @if (Model.HaveDriveLicence)
+                               {
+                                    <label>نعم</label>
+                                        
+                                        }else{
+                                    <label>لا</label>
+                               }
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                 @Html.DisplayNameFor(model => model.IsInjured)
+                                @if (Model.IsInjured)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.IsSmoke)
+                                @if (Model.IsSmoke)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                               @Html.DisplayNameFor(model => model.HaveMidecal)
+                                @if (Model.HaveMidecal)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.HaveSurjury)
+                                @if (Model.HaveSurjury)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!--Public part-->
+            <div class="mt-2 card">
+                <label class="txt card-header btx">معلومات عامة</label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.IsHavePreviousOrder)
+                                @if (Model.IsHavePreviousOrder)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.IsSeprated)
+                                @if (Model.IsSeprated)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.IsHaveCrime)
+                                @if (Model.IsHaveCrime)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                @Html.DisplayNameFor(model => model.IsHaveSpicialWork)
+                                @if (Model.IsHaveSpicialWork)
+                                {
+                                    <label>نعم</label>
+
+                                }
+                                else
+                                {
+                                    <label>لا</label>
+                                }
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="JobTitle" class="control-label"></label>
+                            <input asp-for="JobTitle" class="form-control" disabled />
+                            <span asp-validation-for="JobTitle" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="JobCanDo" class="control-label"></label>
+                            <input asp-for="JobCanDo" class="form-control" disabled />
+                            <span asp-validation-for="JobCanDo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+
+                        <div class="form-group">
+                            <label asp-for="ExpectSalary" class="control-label"></label>
+                            <input asp-for="ExpectSalary" class="form-control" disabled />
+                            <span asp-validation-for="ExpectSalary" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PeroudTime" class="control-label"></label>
+                            <input asp-for="PeroudTime" class="form-control" disabled />
+                            <span asp-validation-for="PeroudTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Gaols" class="control-label"></label>
+                            <input asp-for="Gaols" class="form-control" disabled />
+                            <span asp-validation-for="Gaols" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="WhyChoosCompany" class="control-label"></label>
+                            <textarea asp-for="WhyChoosCompany" class="form-control" rows="3" disabled>
+
+                            </textarea>
+                            <span asp-validation-for="WhyChoosCompany" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+          
+
+
+        </form>
+    </div>
+</div>
+
+
+<footer class="border-top footer  foot">
+    <div class="container text-center">
+        &copy; 2024 - ShawarmaHousePortal
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>

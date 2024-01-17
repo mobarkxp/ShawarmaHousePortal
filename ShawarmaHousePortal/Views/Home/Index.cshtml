@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center col-12 ">
+     <img src="~/Image/بيت الشاورما.jpg" alt=""  height="200" />
+
+</div>
+
+
+
+<div class="col-12">
+    <h3> انضم إلينا</h3>
+    <p>
+        توفر شركة بيت الشاورما بيئة عمل مميزة ومتطورة، تجعلها على رأس قائمة الخيارات للباحثين عن الوظائف في مجال المطاعم والضيافة بمختلف قطاعاته، سواءٌ من الخريجين الجدد أم أصحاب الخبرات.
+    </p>
+    <p>
+        ونظراً للنمو المتزايد في حجم عملياتنا والتوسع في شبكة فروعنا، فإننا نوفر باستمرار فرصاً وظيفية للراغبين في الانضمام إلى فريق العمل .
+
+    </p>
+    <p>
+
+وتحدد مجموعة الموارد البشرية ب الشركة بشكل مستمر احتياجات مختلف الإدارات ب الشركة من الوظائف واستحداث وظائف جديدة لتطوير دورة العمل ب الشركة. بالإضافة إلى تحديد وكتابة الوصف الوظيفي الدقيق لكل وظيفة. 
+
+ويعتبر موقع التوظيف في شركة بيت الشاورما  منصة تفاعل حقيقية تستقطب الباحثين عن فرص عمل من الذكور والإناث، إلى جانب فتح المجال للخريجين الجدد للانضمام للعمل .
+    </p>
+</div>
+<button class="btn bt mb-2" asp-action="CreateEmp" asp-controller="Home" data-bs-toggle="modal" data-bs-target="#exampleModal">تقديم طلب</button>
+
+
+
+
+<!--
+
+<div class="text-center " >
+
+    <h5 data-aos="fade-left"
+    data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
+        نرحب بك في شركة مطعم بيت الشاورما
+        <br>
+        تحية طيبة  ،،،
+        <br>
+        فضلا قم ببناء سيرتك الذاتية و احرص على أن تكون البيانات والمعلومات صحيحة ومكتملة، مما يزيد وبشكل أكبر من فرص توافق مؤهلاتك وخبراتك مع متطلبات الوظائف المتاحة.
+        <br>
+        تمنياتنا لكم بحياة عملية ناجحة !.
+
+    </h5>
+    <hr />
+    <a class="btn bt" asp-action="CreateEmp" asp-controller="Home">تقديم طلب</a>
+    <label id="show1"></label>
+</div>
+
+
+-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bt">
+                <h5 class="modal-title" id="exampleModalLabel">تذكير</h5>
+              
+            </div>
+            <div class="modal-body">
+                <div class="text-center ">
+
+                    <h5 data-aos="fade-left"
+                        data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
+                        نرحب بك في شركة مطعم بيت الشاورما
+                        <br>
+                        تحية طيبة  ،،،
+                        <br>
+                        فضلا قم ببناء سيرتك الذاتية و احرص على أن تكون البيانات والمعلومات صحيحة ومكتملة، مما يزيد وبشكل أكبر من فرص توافق مؤهلاتك وخبراتك مع متطلبات الوظائف المتاحة.
+                        <br>
+                        تمنياتنا لكم بحياة عملية ناجحة !.
+
+                    </h5>
+                 
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء</button>
+                <a class="btn bt" asp-action="CreateEmp" asp-controller="Home">تقديم طلب</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+   <script>
+        function func1() {
+            toastr.info('Are you the 6 fingered man?');
+
+        }
+   </script>
+}

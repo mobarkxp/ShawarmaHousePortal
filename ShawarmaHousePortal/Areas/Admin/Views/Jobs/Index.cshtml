@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ShawarmaHousePortal.Models.Job>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 ">
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الرئيسية </a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">الوظائف</li>
+    </ol>
+</nav>
+<br />
+
+<div class="card">
+
+
+    <div class="card-header">
+        <a class="btn btn-primary" asp-area="Admin" asp-controller="Jobs" asp-action="Create">إضافة وظيفة</a>
+
+    </div>
+    <div class="card-body">
+
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JonPranch)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobCreateDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobSatuse)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobDescription)
+                    </th>
+                    <th>
+                       الاحداث 
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JonPranch)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobCreateDate)
+                        </td>
+                        <td>
+                            @{
+                                if (item.JobSatuse)
+                                {
+                               <span class="badge badge-secondary bg-success">متاح</span>
+                                }else{
+                                    <span class="badge badge-secondary bg-danger">مغلق</span>
+                                }
+                            }
+                            
+                        </td>
+                        <td width="10%">
+                            @Html.DisplayFor(modelItem => item.JobDescription)
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.JobId">تعديل</a> |
+                            <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.JobId">تفاصيل</a> |
+                            <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.JobId">حذف</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

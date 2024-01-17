@@ -1,0 +1,454 @@
+﻿@model ShawarmaHousePortal.Models.Employee
+
+@{
+    ViewData["Title"] = "CreateEmp";
+}
+
+<div class="row card">
+   
+        
+    
+    <h4 class="card-header txt">طلب وظيفي</h4>
+    
+    <div class="col-md-12 card-body">
+        <form asp-action="CreateEmp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!--
+                card spicial information
+            -->
+            <div class="card">
+                <label class="txt card-header btx">معلومات شخصية</label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <input class=" txt" asp-for="RandomEmpid" id="rondoemid" value="@ViewBag.random"  hidden>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label"></label>
+                            <input type="number" asp-for="Phone" placeholder="05xxxxxxxx" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="DateBrith" class="control-label"></label>
+                            <input asp-for="DateBrith" type="date" value="@System.DateTime.Now" class="form-control" />
+                            <span asp-validation-for="DateBrith" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="GenderId" class="control-label"></label>
+                            <select asp-for="GenderId" class="form-select" asp-items="ViewBag.Gender"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CityId" class="control-label"></label>
+                            <select asp-for="CityId" class="form-select" asp-items="ViewBag.City"></select>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                       
+                        <div class="form-group">
+                            <label asp-for="MariedId" class="control-label"></label>
+                            <select asp-for="MariedId" class="form-select" asp-items="ViewBag.Maried"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label"></label>
+                            <textarea asp-for="Address" placeholder="اسم المدينة - الحي - الشارع" class="form-control" rows="2"></textarea>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--Education information-->
+           
+             <div class="card mt-2">
+                <label class="txt card-header btx">المعلومات العلمية </label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">  التخصص</label>
+                            <input class="form-control" id="edDepartment" />
+                           
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">  الشهادة</label>
+                            <input type="text" class="form-control" id="edCertivicate" />
+                           
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">التقدير</label>
+                            <input class="form-control" id="edAvarage" />
+                            
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">  الجهة المانحة</label>
+                            <input class="form-control" id="edUnivircity" />
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">السنة</label>
+                            <input type="date" class="form-control" id="edDate" />
+                           
+                        </div>
+                       
+                        <div class="form-group mt-2 col-4">
+                            <a class="btn bt btn-sm form-control" id="educationbtn">اضافة</a>
+                        </div>
+
+
+                    </div>
+                   
+                </div>
+                
+            </div>
+
+            
+            <!-- Work part-->
+            <div class="mt-2 card">
+                <label class="txt card-header btx">معلومات الوظيفة  </label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label  class="control-label"> المسمى الوظيفي</label>
+                            <input id="WName" class="form-control" />
+                           
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">  الراتب</label>
+                            <input id="Salary" type="number" class="form-control" />
+                           
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">  جهة العمل</label>
+                            <input id="WCompany" class="form-control" />
+                           
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">  العنوان</label>
+                            <textarea id="WAddress" class="form-control" rows="2">
+
+                            </textarea>
+                                                </div>
+                       
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">  من </label>
+                            <input type="date" id="WStartDate" class="form-control" />
+                                                    </div>
+                        <div class="form-group">
+                            <label  class="control-label">  إلى</label>
+                            <input id="WEndDate" type="date" class="form-control" />
+
+                        </div>
+                        <div class="form-group mt-2 col-4">
+                            <a class="btn bt btn-sm form-control" id="addExperiance">اضافة</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- midical part-->
+            <div class="mt-2 card">
+                <label class="txt card-header btx">معلومات صحية</label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group form-check">
+                            <label>@Html.DisplayNameFor(model => model.HaveDriveLicence) </label>
+                            <select class="form-select" asp-for="HaveDriveLicence" >
+                                <option value="False">لا</option>
+                                   <option value="True">نعم</option>
+                                  
+                                </select>
+                           
+                        </div>
+                       
+                        <div class="form-group form-check">
+                            <label>@Html.DisplayNameFor(model => model.IsInjured)</label>
+                            <select id="IsInjuredchek" class="form-select" asp-for="IsInjured">
+                                
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                               
+                            </select>
+                            <input id="IsInjuredinput" class="form-control  d-none" placeholder="ادخل نوع الاصابة" />
+                        </div>
+
+                        <div class="form-group form-check">
+                            <label>@Html.DisplayNameFor(model => model.IsSmoke)</label>
+                            <select class="form-select" asp-for="IsSmoke">
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                               
+                            </select>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group form-check">
+                            <label>@Html.DisplayNameFor(model => model.HaveMidecal)</label>
+                            <select id="HaveMidecalchek" class="form-select" asp-for="HaveMidecal">
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                               
+                            </select>
+                            <input id="HaveMidecalinput" class="form-control  d-none" placeholder="ادخل نوع العلاج" />
+
+                        </div>
+                        <div class="form-group form-check">
+                            <label>@Html.DisplayNameFor(model => model.HaveSurjury)</label>
+                            <select id="HaveSurjurychek" class="form-select" asp-for="HaveSurjury">
+                                <option value="False">لا</option>
+                                    <option value="True">نعم</option>
+                                    
+                                </select>
+                            <input id="HaveSurjuryinput" class="form-control  d-none" placeholder="ادخل نوع العملية" />
+
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!--Public part-->
+            <div class="mt-2 card">
+                <label class="txt card-header btx">معلومات عامة</label>
+                <div class="row card-body">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group form-check">
+                            <label>@Html.DisplayNameFor(model => model.IsHavePreviousOrder)</label>
+                            <select class="form-select" asp-for="IsHavePreviousOrder">
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                                
+                            </select>
+                            
+                        </div>
+                        <div class="form-group form-check">
+                            <label> @Html.DisplayNameFor(model => model.IsSeprated)</label>
+                            <select class="form-select" asp-for="IsSeprated">
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                               
+                            </select>
+                            <input id="IsSepratedinput" class="form-control  d-none" placeholder="ادخل سبب الفصل ..." />
+
+                        </div>
+                        <div class="form-group form-check">
+                            <label> @Html.DisplayNameFor(model => model.IsHaveCrime)</label>
+                            <select class="form-select" asp-for="IsHaveCrime">
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                               
+                            </select>
+                            
+                        </div>
+                        <div class="form-group form-check">
+                            <label>  @Html.DisplayNameFor(model => model.IsHaveSpicialWork)</label>
+                            <select class="form-select" asp-for="IsHaveSpicialWork">
+                                <option value="False">لا</option>
+                                <option value="True">نعم</option>
+                                
+                            </select>
+                           
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="JobTitle" class="control-label"></label>
+                            <input asp-for="JobTitle" class="form-control" />
+                            <span asp-validation-for="JobTitle" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="JobCanDo" class="control-label"></label>
+                            <input asp-for="JobCanDo" class="form-control" />
+                            <span asp-validation-for="JobCanDo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                       
+                        <div class="form-group">
+                            <label asp-for="ExpectSalary" class="control-label"></label>
+                            <input asp-for="ExpectSalary" class="form-control" />
+                            <span asp-validation-for="ExpectSalary" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PeroudTime" class="control-label"></label>
+                          
+                            <select asp-for="PeroudTime" class="form-select">
+                                <option value="فوراً">فوراً</option>
+                                <option value="اسبوع">اسبوع</option>
+                                <option value="اسبوعين">اسبوعين</option>
+                                <option value="شهرين">شهرين</option>
+                                <option value="اكثر من شهرين">اكثر من شهرين</option>
+                                <option value="غير ذالك">غير ذالك</option>
+                            </select>
+                            <span asp-validation-for="PeroudTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Gaols" class="control-label"></label>
+                            <input asp-for="Gaols" class="form-control" />
+                            <span asp-validation-for="Gaols" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="WhyChoosCompany" class="control-label"></label>
+                            <textarea asp-for="WhyChoosCompany" class="form-control" rows="3" >
+
+                            </textarea>
+                            <span asp-validation-for="WhyChoosCompany" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="form-group  row justify-content-end">
+                    <div class="col-4">
+                        <input type="submit" value="ارسال" class="bt form-control" />    
+                    </div>
+                   
+                </div>
+            </div>
+
+           
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+
+    <!--this ajax function for adding educations -->
+    <script>
+        $(document).ready(function () {
+            $("#educationbtn").click(function () {
+                var mytable = $("#showwork tablebody");
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/AddEducation",
+                    data: { edDepartment: $("#edDepartment").val(), edCertivicate: $("#edCertivicate").val(), edAvarage: $("#edAvarage").val(), edUnivircity: $("#edUnivircity").val(), edDate: $("#edDate").val(), EmpRonomId: $("#rondoemid").val() },
+                    dataType: "json",
+                    success: function (resultData) {
+                        $('#edDepartment').val('');
+                        $('#edCertivicate').val('');
+                        $('#edAvarage').val('');
+                        $('#edUnivircity').val('');
+                        $('#edDate').val('');
+                       
+                    },
+                    Error: function (result) {
+                        alert("error");
+                    }
+                })
+            })
+
+        })
+
+    </script>
+
+    <!--this ajax function for adding Experiances -->
+    <script>
+        $(document).ready(function () {
+            $("#addExperiance").click(function () {
+               
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/AddExperiance",
+                    data: { WName: $("#WName").val(), WCompany: $("#WCompany").val(), Salary: $("#Salary").val(), WStartDate: $("#WStartDate").val(), WEndDate: $("#WEndDate").val(), WAddress: $("#WAddress").val(), EmpRonomId: $("#rondoemid").val() },
+                    dataType: "json",
+                    success: function (resultData) {
+                        $('#WName').val('');
+                        $('#WCompany').val('');
+                        $('#Salary').val('');
+                        $('#WStartDate').val('');
+                        $('#WEndDate').val('');
+                        $('#WAddress').val('');
+                       // alert(JSON.stringify(resultData));
+                    },
+                    Error: function (result) {
+                        alert("error");
+                    }
+                })
+            })
+
+        })
+
+    </script>
+
+    <!-- this function for IsInjuredinput chking if yes-->
+
+    <script>
+        $(document).ready(function () {
+            $('#IsInjuredchek').change(function () {
+                var data = $('#IsInjuredchek :selected').val();
+
+                if (data != "True") {
+                    $('#IsInjuredinput').addClass('d-none');
+
+                } else {
+                    $('#IsInjuredinput').removeClass('d-none');
+                }
+
+            });
+            $('#HaveMidecalchek').change(function () {
+                var data = $('#HaveMidecalchek :selected').val();
+
+                if (data != "True") {
+                    $('#HaveMidecalinput').addClass('d-none');
+
+                } else {
+                    $('#HaveMidecalinput').removeClass('d-none');
+                }
+
+            });
+            $('#HaveSurjurychek').change(function () {
+                var data = $('#HaveSurjurychek :selected').val();
+                
+                if (data != "True") {
+                    $('#HaveSurjuryinput').addClass('d-none');
+
+                } else {
+                    $('#HaveSurjuryinput').removeClass('d-none');
+                }
+
+            })
+        
+        }
+        )
+    </script>
+
+    }

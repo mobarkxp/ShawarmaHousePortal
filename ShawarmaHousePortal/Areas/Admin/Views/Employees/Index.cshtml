@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ShawarmaHousePortal.Models.Employee>
+
+@{
+    
+    ViewData["Title"] = "Index";
+}
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 ">
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الرئيسية </a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">المتقدمين</li>
+    </ol>
+</nav>
+<br />
+
+<div class="card">
+
+
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateBrith)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>
+                        الاحداث
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                       
+                        <td>
+                            @Html.DisplayFor(modlItem=>item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateBrith)
+
+                        </td>
+                        <td width="10%">
+                            @Html.DisplayFor(modelItem => item.Gender.GenderName)
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.EmpId">تفاصيل</a>
+                            <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@item.EmpId">حذف</a>
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

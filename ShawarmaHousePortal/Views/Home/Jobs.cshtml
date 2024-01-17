@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ShawarmaHousePortal.Models.Job>
+
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+
+<div class="row">
+@foreach(var item in Model)
+{
+    <div class="col-lg-4 col-sm-6 mt-2">
+        <div class="card  bg-light rounded shadow">
+            <div class="card-header d-flex justify-content-between">
+                <strong class="card-title ">
+                        @Html.DisplayFor(modelItem => item.JobName)
+                    </strong>
+                    @{
+
+                        if (item.JobSatuse)
+                        {
+
+                            <a class="btn btn-sm bt" asp-action="CreateEmp" asp-route-id="@item.JobId"> تقديم </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm bt disabled" asp-action="CreateEmp" asp-route-id="@item.JobId"> تقديم </a>
+
+                        }
+
+                    }
+            </div>
+
+            <div class="card-body">
+                <div class=" row text-muted">
+                    <div class="col-6">
+                            <span class="text-muted d-block"><i class="fa fa-home" aria-hidden="true"></i> الفرع : @Html.DisplayFor(modelItem => item.JonPranch)</span>
+                           
+                    </div>
+                    <div class="col-6">
+                        <span class="text-muted d-block"><i class="fa fa-map-marker"></i> الموقع :</span>
+
+                    </div>
+                    <div class="col-12">
+                            <span class="text-muted d-block">
+                                <i class="fa fa-map-marker"></i>  @Html.DisplayFor(modelItem => item.JobDescription)
+                               
+                            </span>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class=" card-footer text-muted justify-content-between ">
+                 <div class="row">
+                        <div class="col-9">
+                            @Html.DisplayFor(modelItem => item.JobCreateDate)
+                        </div>
+
+                        <div class="col-3 text-muted">
+                            @{
+                                
+                               if (item.JobSatuse)
+                                {
+
+                                    <small class=" text-black bol"> متاح</small>
+                                }
+                                else
+                                {
+                                    <small class=" text-black fw-bold">مغلق </small>
+
+                                }
+                            
+                            }
+
+                        </div>
+                 </div>
+
+            </div>
+        </div>
+    </div>
+}
+ 
+</div>

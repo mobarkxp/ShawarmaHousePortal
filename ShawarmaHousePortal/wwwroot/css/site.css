@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap');
+html {
+    font-size: 14px;
+    font-family: 'Almarai', sans-serif;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+        font-family: 'Almarai', sans-serif;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: 'Almarai', sans-serif;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Almarai', sans-serif;
+    height: 100%
+}
+.d-none{
+    display:none;
+}
+.bt {
+    background-color: #F5821D;
+    color: white
+}
+.btx {
+    background-color: #F5821D;
+    color: white
+}
+    .bt:hover {
+        color:white;
+        background-color: #F0CA5D;
+    }
+.foot {
+    background-color: #F5821D;
+    color: white
+}
+.txt {
+    
+    font-weight:600;
+}
+
+.navHover:hover {
+    color: #F0CA5D;
+}

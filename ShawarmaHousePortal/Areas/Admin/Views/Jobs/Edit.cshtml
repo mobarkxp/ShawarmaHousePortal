@@ -1,0 +1,60 @@
+﻿@model ShawarmaHousePortal.Models.Job
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 ">
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الرئيسية </a></li>
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الوظائف </a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">تعديل</li>
+    </ol>
+</nav>
+<br />
+
+<div class="card">
+    <h4 class="card-header">تعديل </h4>
+    <hr />
+    <div class="row card-body">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="JobId" />
+                <div class="form-group">
+                    <label asp-for="JobName" class="control-label"></label>
+                    <input asp-for="JobName" class="form-control" />
+                    <span asp-validation-for="JobName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="JonPranch" class="control-label"></label>
+                    <input asp-for="JonPranch" class="form-control" />
+                    <span asp-validation-for="JonPranch" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="JobCreateDate" class="control-label"></label>
+                    <input asp-for="JobCreateDate" class="form-control" />
+                    <span asp-validation-for="JobCreateDate" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="JobSatuse" /> @Html.DisplayNameFor(model => model.JobSatuse)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="JobDescription" class="control-label"></label>
+                    <input asp-for="JobDescription" class="form-control" />
+                    <span asp-validation-for="JobDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a class="btn btn-sm btn-primary" asp-action="Index">Back to List</a>
+    </div>
+
+</div>
