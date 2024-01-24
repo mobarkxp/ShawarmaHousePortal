@@ -24,6 +24,7 @@ namespace ShawarmaHousePortal.Data
         public DbSet<Surjury>? Surjuries  { get; set; }
         public DbSet<Work>? Works  { get; set; }
         public DbSet<JobShoosed>? JobsShoosed  { get; set; }
+        public DbSet<EducationLevel> EducationLevels { get; set; }
 
 
     }

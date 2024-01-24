@@ -1,0 +1,33 @@
+﻿@model Domin.Models.EducationLevel
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 ">
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الرئيسية </a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">اضافة دولة</li>
+    </ol>
+</nav>
+<br />
+
+<div class="card">
+   <h3 class="card-header">هل تريد الحذف ؟</h3>
+    <div class="card-body">
+
+<div>
+   
+  
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EducationLevelName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EducationLevelName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EducationLevelId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>
+</div>
+</div>

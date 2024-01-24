@@ -1,3 +1,4 @@
+using Domin.Models;
 using Infrastrucure.IRepository;
 using Infrastrucure.IRepository.ServicesRepository;
 using Microsoft.AspNetCore.Identity;
@@ -25,6 +26,7 @@ builder.Services.AddScoped< IServicesRepository < City > , ServiceCity>();
 builder.Services.AddScoped< IServicesRepository < Employee > , EmployeeRepository>();
 builder.Services.AddScoped< IServicesRepository < Education > , EducationService>();
 builder.Services.AddScoped< IServicesRepository < Work > , WorkService>();
+builder.Services.AddScoped< IServicesRepository < EducationLevel > , EducationLevelService>();
 
 //builder.Services.AddTransient(typeof(INewServices<>), typeof(MainRepository<>));
 

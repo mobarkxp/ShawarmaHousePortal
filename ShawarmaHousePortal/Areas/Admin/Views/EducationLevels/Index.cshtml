@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Domin.Models.EducationLevel>
+
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 ">
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الرئيسية </a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">اضافة شهادة</li>
+    </ol>
+</nav>
+<br />
+
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-header">
+            <a class="btn btn-primary" asp-area="Admin" asp-controller="EducationLevels" asp-action="Create">إضافة شهادة</a>
+
+        </div>
+       
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EducationLevelName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EducationLevelName)
+                            </td>
+                            <td>
+
+                                <a class="btn btn-sm btn-primary" asp-action="Details"  asp-route-id="@item.EducationLevelId">تعديل</a> |
+                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.EducationLevelId">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

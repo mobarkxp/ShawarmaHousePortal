@@ -1,4 +1,5 @@
-﻿using Infrastrucure.IRepository;
+﻿using Domin.Models;
+using Infrastrucure.IRepository;
 using Infrastrucure.IRepository.ServicesRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,6 +19,7 @@ namespace ShawarmaHousePortal.Controllers
         private readonly IServicesRepository<Employee> _employeeservice;
         private readonly IServicesRepository<Education> _EducationService;
         private readonly IServicesRepository<Work> _workService;
+        private readonly IServicesRepository<EducationLevel> _educationlevelservice;
 
         public HomeController(IServicesRepository<Job> servicesJob,
             IServicesRepository<Gender> genderServices,
@@ -25,7 +27,8 @@ namespace ShawarmaHousePortal.Controllers
             IServicesRepository<City> CityServices,
             IServicesRepository<Employee> employeeservice,
             IServicesRepository<Education> educationService,
-            IServicesRepository<Work> WorkService)
+            IServicesRepository<Work> WorkService,
+            IServicesRepository<EducationLevel> educationlevelservice)
         {
             _servicesJob = servicesJob;
             _genderServices = genderServices;
@@ -34,6 +37,7 @@ namespace ShawarmaHousePortal.Controllers
             _employeeservice = employeeservice;
             _EducationService = educationService;
            _workService = WorkService;
+            _educationlevelservice = educationlevelservice;
         }
 
         public IActionResult Index()
@@ -53,6 +57,7 @@ namespace ShawarmaHousePortal.Controllers
            ViewBag.Gender=new SelectList(_genderServices.GetAll(), "GenderId", "GenderName");
            ViewBag.Maried=new SelectList(_mariedService.GetAll(), "MId", "MName");
             ViewBag.City = new SelectList(_cityServices.GetAll(), "CityId", "CityName");
+            ViewBag.EducationLevel = new SelectList(_educationlevelservice.GetAll(), "EducationLevelId", "EducationLevelName");
             Random invoicid = new Random();
             var x = invoicid.Next(10000, 1000000);
             ViewBag.random = x.ToString();
@@ -92,7 +97,7 @@ namespace ShawarmaHousePortal.Controllers
         {
             Education education = new Education
             {
-                EName = edCertivicate,
+                EName = int.Parse(edCertivicate),
                 Specialization = edDepartment,
                 Average = edAvarage,
                 Scool = edUnivircity,

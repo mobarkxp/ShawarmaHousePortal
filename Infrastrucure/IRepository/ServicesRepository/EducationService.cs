@@ -49,7 +49,7 @@ namespace Infrastrucure.IRepository.ServicesRepository
             try
             {
                 var newid=_dbContext.Employees.FirstOrDefault(x=>x.EmpId == id);
-              return (_dbContext.Educations.Where(x => x.EmployNum == newid.RandomEmpid).ToList());
+              return (_dbContext.Educations.Include(y => y.EducationLevel).Where(x => x.EmployNum == newid.RandomEmpid).ToList());
             }catch(Exception) { return null; }
         }
 

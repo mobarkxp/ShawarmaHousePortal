@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShawarmaHousePortal.Data;
 
@@ -11,9 +12,10 @@ using ShawarmaHousePortal.Data;
 namespace ShawarmaHousePortal.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240122174545_AddEducationLevelTable")]
+    partial class AddEducationLevelTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -291,8 +293,9 @@ namespace ShawarmaHousePortal.Data.Migrations
                     b.Property<string>("Average")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EName")
-                        .HasColumnType("int");
+                    b.Property<string>("EName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Edate")
                         .HasColumnType("datetime2");
@@ -307,8 +310,6 @@ namespace ShawarmaHousePortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EId");
-
-                    b.HasIndex("EName");
 
                     b.ToTable("Educations");
                 });
@@ -618,17 +619,6 @@ namespace ShawarmaHousePortal.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ShawarmaHousePortal.Models.Education", b =>
-                {
-                    b.HasOne("Domin.Models.EducationLevel", "EducationLevel")
-                        .WithMany()
-                        .HasForeignKey("EName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EducationLevel");
                 });
 
             modelBuilder.Entity("ShawarmaHousePortal.Models.Employee", b =>

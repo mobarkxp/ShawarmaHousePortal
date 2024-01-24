@@ -1,0 +1,30 @@
+﻿@model Domin.Models.EducationLevel
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 ">
+        <li class="breadcrumb-item text-sm ps-2"><a class="opacity-5 text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">الرئيسية </a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">اضافة دولة</li>
+    </ol>
+</nav>
+
+<div class="card">
+
+    <div class="card-body">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EducationLevelName" class="control-label"></label>
+                <input asp-for="EducationLevelName" class="form-control" />
+                <span asp-validation-for="EducationLevelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+

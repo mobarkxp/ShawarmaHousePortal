@@ -41,7 +41,7 @@ namespace Infrastrucure.IRepository.ServicesRepository
         {
             try
             {
-                return _dbContext.Cities.ToList();
+                return _dbContext.Cities.OrderBy(x=>x.CityName).ToList();
             }
             catch(Exception)
             {

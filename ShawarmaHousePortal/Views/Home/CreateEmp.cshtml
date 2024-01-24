@@ -87,7 +87,9 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">  الشهادة</label>
-                            <input type="text" class="form-control" id="edCertivicate" />
+                            
+                            <select asp-for="MariedId" id="edCertivicate" class="form-select" asp-items="ViewBag.EducationLevel"></select>
+                            
                            
                         </div>
 
@@ -232,7 +234,6 @@
                                 </select>
                             <input id="HaveSurjuryinput" class="form-control  d-none" placeholder="ادخل نوع العملية" />
 
-                           
                         </div>
                     </div>
 
@@ -307,10 +308,9 @@
                           
                             <select asp-for="PeroudTime" class="form-select">
                                 <option value="فوراً">فوراً</option>
-                                <option value="اسبوع">اسبوع</option>
                                 <option value="اسبوعين">اسبوعين</option>
-                                <option value="شهرين">شهرين</option>
-                                <option value="اكثر من شهرين">اكثر من شهرين</option>
+                                <option value="شهر">شهرين</option>
+                                <option value=" شهرين">اكثر من شهرين</option>
                                 <option value="غير ذالك">غير ذالك</option>
                             </select>
                             <span asp-validation-for="PeroudTime" class="text-danger"></span>
@@ -357,10 +357,11 @@
         $(document).ready(function () {
             $("#educationbtn").click(function () {
                 var mytable = $("#showwork tablebody");
+                
                 $.ajax({
                     type: "POST",
                     url: "/Home/AddEducation",
-                    data: { edDepartment: $("#edDepartment").val(), edCertivicate: $("#edCertivicate").val(), edAvarage: $("#edAvarage").val(), edUnivircity: $("#edUnivircity").val(), edDate: $("#edDate").val(), EmpRonomId: $("#rondoemid").val() },
+                    data: { edDepartment: $("#edDepartment").val(), edCertivicate: $("#edCertivicate option:selected").val(), edAvarage: $("#edAvarage").val(), edUnivircity: $("#edUnivircity").val(), edDate: $("#edDate").val(), EmpRonomId: $("#rondoemid").val() },
                     dataType: "json",
                     success: function (resultData) {
                         $('#edDepartment').val('');
